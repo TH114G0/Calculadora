@@ -3,8 +3,31 @@
     padding: 0;
 }
 
+
+:root {
+    --bg-url: url(/bg-mobile-dark\ \(1080x1920\).jpg);
+    --highlight-color: rgba(255, 255, 255, 0.037);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --switch-bg-url: url(/moon-star.svg);
+    --background-color: #191970;
+
+}
+
+.light {
+    --bg-url: url(/bg-mobile-light\ \(1080x1920\).jpg);
+    --text-color: black;
+    --highlight-color: rgba(0, 0, 0, 0.111);
+    --highlight-color: rgba(0, 0, 0, 0.200);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.200);
+    --switch-bg-url: url(/sun.svg);
+    --background-color: #FFA500;
+}
+
 .fundo {
-    background: url(/bg-mobile-dark\ \(1080x1920\).jpg) no-repeat top center/cover;
+    background: var(--bg-url) top center/cover;
     height: 100vh;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -14,7 +37,7 @@
 
     /*position: absolute ocupa somente o espaço dela*/
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
      /*position: absolute ocupa somente o espaço dela*/
 
     /*Centralizando div*/
@@ -93,5 +116,70 @@
 }
 
 #social-links a:hover { 
-    background: rgba(255, 255, 255, 0.037);
+    background: var(--highlight-color);
+}
+
+#switch {
+   
+    /*position: relative;
+    width: 64px;
+    margin: 4px auto;*/
+    position: relative;
+    width: 64px;
+    margin: 12px auto; /*margin de 4px e centraliza ao meio*/
+    top: 80px;
+}
+
+#switch button{
+   
+    width: 32px;/*Largura*/
+    height: 32px;/*Altura*/
+    background: var(--switch-bg-url) no-repeat center;
+    border: 0; /*Remoção da borda*/
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    z-index: 1;
+    transform: translate(0%);
+    animation: slide-back .4s;
+    background-color: var(--background-color);
+}
+
+.light #switch button {
+    animation: slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+    outline: 8px solid var(--highlight-color);
+}
+
+#switch span {
+
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+    to {
+        left: 0;
+    }
 }

@@ -20,3 +20,8 @@ function Calcular() {
         document.getElementById('Resultado').innerHTML = ":)";
     }
 }
+function togglemode(){
+    const html = document.documentElement
+    html.classList.toggle('light')
+    
+}
